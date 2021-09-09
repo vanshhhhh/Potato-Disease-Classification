@@ -1,6 +1,5 @@
 import streamlit as st
 import tensorflow as tf
-import cv2
 from PIL import Image, ImageOps
 import numpy as np
 st.set_page_config(
@@ -32,8 +31,6 @@ def import_and_predict(image_data, model):
         size = (256,256)    
         image = ImageOps.fit(image_data, size, Image.ANTIALIAS)
         img = np.asarray(image)
-        #img = cv2.cvtColor(image, cv2.COLOR_BGR2RGB)
-        #img_reshape = (cv2.resize(img, dsize=(256, 256),    interpolation=cv2.INTER_CUBIC))/255.
         img_reshape = img[np.newaxis,...]
         prediction = model.predict(img_reshape)
         return prediction
